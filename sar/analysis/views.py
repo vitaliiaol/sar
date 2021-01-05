@@ -14,20 +14,6 @@ class AllergiesListView(APIView):
       return Response(serializer.data)
 
 
-class ComponentsDetailView(APIView):
-
-    def get_object(self, pk):
-        try:
-            Components.get(pk=pk)
-        except Exception:
-            return Response(status=status.HTTP_400_BAD_REQUEST)
-
-    def get(self, request, pk, format=None):
-        component = self.get_object(pk)
-        serializer = ComponentSerializer(component)
-        return Response(serializer.data)
-
-
 class ComponentsListView(APIView):
 
    def get(self, request, format=None):
